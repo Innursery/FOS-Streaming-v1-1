@@ -42,6 +42,20 @@ if ($user->exp_date != "0000-00-00") {
     }
 }
 
+$stream = Stream::find($_GET['stream']);
+
+$acl_cat = array();
+
+foreach($user->categories as $category) {
+   foreach($category->streams as $s) {
+       $acl_cat[$s->cat_id] = true;
+   }
+}
+
+if(!$acl_cat[$stream->cat_id]){
+    die("no access category");
+}
+
 if ($user_max_connections != 0 && $active_cons >= $user_max_connections) {
     $maxconntactionactivity = Activity::where("user_id", "=", $user_id)->where("user_ip", "=", $user_ip)->where("date_end", "=", null)->first();
 
@@ -53,8 +67,6 @@ if ($user_max_connections != 0 && $active_cons >= $user_max_connections) {
         }
     }
 }
-
-$stream = Stream::find($_GET['stream']);
 
 if (!$stream) {
     die("stream not found2");
