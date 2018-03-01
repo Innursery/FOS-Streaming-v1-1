@@ -165,7 +165,7 @@ if (!file_exists("/usr/src/FOS-Streaming")) {
 }
 
 
-echo "##";
+echo "## \n";
 
 function GetFos() {
     shell_exec("rm -rf /usr/src/FOS-Streaming/*");
