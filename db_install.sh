@@ -21,8 +21,9 @@ read -p "Choose your MySQL database name: " sqldatabase
 read -p "Enter your MySQL username(usual 'root'): " sqluname 
 read -rep $'Enter your MySQL password (ENTER for none):' sqlpasswd
 
-mysql -uroot -p$sqlpasswd -e "CREATE DATABASE $sqldatabase"
-mysql -uroot -p$sqlpasswd -e "grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
+#mysql -uroot -p$sqlpasswd -e "CREATE DATABASE $sqldatabase"
+#mysql -uroot -p$sqlpasswd -e "grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
+mysqladmin -uroot -p$sqlpasswd create $sqldatabase
 
 echo  "hostname: localhost, database_name: " $sqldatabase " , database_username: "  $sqluname  " , database_password " $sqlpasswd
 echo "\n "
