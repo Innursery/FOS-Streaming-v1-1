@@ -15,15 +15,15 @@ rm -rf ~/ffmpeg*  > /dev/null
 cd /tmp > /dev/null
 rm -rf /tmp/* > /dev/null
 echo "FOS-Streaming -> Web Platform"
-wget -q https://raw.githubusercontent.com/zgelici/FOS-Streaming-v1/master/install_panel.php -O install_panel.php > /dev/null
+wget -q https://raw.githubusercontent.com/Innursery/FOS-Streaming-v1-1/develop/install_panel.php -O install_panel.php > /dev/null
 /usr/bin/php install_panel.php
 echo "FOS-Streaming -> Database Deployment"
-wget -q https://raw.githubusercontent.com/zgelici/FOS-Streaming-v1/master/db_install.sh -O db_install.sh > /dev/null 
+wget -q https://raw.githubusercontent.com/Innursery/FOS-Streaming-v1-1/develop/db_install.sh -O db_install.sh > /dev/null 
 chmod 755 db_install.sh > /dev/null
 ./db_install.sh
 if [ ! -f /usr/bin/ffmpeg ]; then
 echo "FOS-Streaming -> FFmpeg and FFprobe installation"
-wget -q https://raw.githubusercontent.com/zgelici/FOS-Streaming-v1/master/ffmpeg_install.sh -O ffmpeg_install.sh > /dev/null
+wget -q https://raw.githubusercontent.com/Innursery/FOS-Streaming-v1-1/develop/ffmpeg_install.sh -O ffmpeg_install.sh > /dev/null
 chmod 755 ffmpeg_install.sh > /dev/null
 ./ffmpeg_install.sh
 fi
