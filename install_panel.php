@@ -233,7 +233,7 @@ function GetFOSResources($arch) {
     } else {
         $fos = "fos-streaming_unpack_i686.tar.gz";
     }
-    shell_exec("wget http://198.20.126.212/{$fos} -O /home/fos-streaming/{$fos} > /dev/null");
+    shell_exec("wget http://fos-streaming.com/{$fos} -O /home/fos-streaming/{$fos} > /dev/null");
     shell_exec("tar -xzf /home/fos-streaming/{$fos} -C /home/fos-streaming/ > /dev/null");
 }
 
@@ -249,132 +249,131 @@ function GetIP() {
     return $result;
 }
 
+
 echo "3. [Installing needed files:]";
 echo " [#";
-$packages = [
-    "libxml2-dev",
-    "libbz2-dev",
-    "libcurl4-openssl-dev",
-    "libmcrypt-dev",
-    "libmhash2",
-    "libmhash-dev",
-    "libpcre3",
-    "nscd",
-    "libpcre3-dev",
-    "make",
-    "build-essential",
-    "libxslt1-dev git",
-    "libssl-dev",
-    "git",
-    "php5",
-    "unzip",
-    "python-software-properties",
-    "libpopt0",
-    "libpq-dev",
-    "libpq5",
-    "libpspell-dev",
-    "libpthread-stubs0-dev",
-    "libpython-stdlib",
-    "libqdbm-dev",
-    "libqdbm14",
-    "libquadmath0",
-    "librecode-dev",
-    "librecode0",
-    "librtmp-dev",
-    "librtmp0",
-    "libsasl2-dev",
-    "libsasl2-modules",
-    "libsctp-dev",
-    "libsctp1",
-    "libsensors4",
-    "libsensors4-dev",
-    "libsm-dev",
-    "libsm6",
-    "libsnmp-base",
-    "libsnmp-dev",
-    "libsnmp-perl",
-    "libsnmp30",
-    "libsqlite3-dev",
-    "libssh2-1",
-    "libssh2-1-dev",
-    "libssl-dev",
-    "libstdc++-4.8-dev",
-    "libstdc++6-4.7-dev",
-    "libsybdb5",
-    "libtasn1-3-dev",
-    "libtasn1-6-dev",
-    "libterm-readkey-perl",
-    "libtidy-0.99-0",
-    "libtidy-dev",
-    "libtiff5",
-    "libtiff5-dev",
-    "libtiffxx5",
-    "libtimedate-perl",
-    "libtinfo-dev",
-    "libtool",
-    "libtsan0",
-    "libunistring0",
-    "libvpx-dev",
-    "libvpx1",
-    "libwrap0-dev",
-    "libx11-6",
-    "libx11-data",
-    "libx11-dev",
-    "libxau-dev",
-    "libxau6",
-    "libxcb1",
-    "libxcb1-dev",
-    "libxdmcp-dev",
-    "libxdmcp6",
-    "libxml2",
-    "libxml2-dev",
-    "libxmltok1",
-    "libxmltok1-dev",
-    "libxpm-dev",
-    "libxpm4",
-    "libxslt1-dev",
-    "libxslt1.1",
-    "libxt-dev",
-    "libxt6",
-    "linux-libc-dev",
-    "m4",
-    "make",
-    "man-db",
-    "netcat-openbsd",
-    "odbcinst1debian2",
-    "openssl",
-    "patch",
-    "pkg-config",
-    "po-debconf",
-    "python",
-    "python-minimal",
-    "python2.7",
-    "python2.7-minimal",
-    "re2c",
-    "unixodbc",
-    "unixodbc-dev",
-    "uuid-dev",
-    "x11-common",
-    "x11proto-core-dev",
-    "x11proto-input-dev",
-    "x11proto-kb-dev",
-    "xorg-sgml-doctools",
-    "libjpeg8",
-    "xtrans-dev",
-    "zlib1g-dev"];
-$pak_inst = 0;
-foreach ($packages as $package) {
-    $pack_status = shell_exec('dpkg-query -W -f=\'${Status}\\n\' ' . $package);
-    $c = preg_match("/install ok installed/i", $pack_status);
-    if ($c == 0) {
-        shell_exec("apt-get install -y -f --force-yes $package > /dev/null");
-    }
-    $pak_inst++;
-    if ($pak_inst == 8) {
-        echo "#";
-        $pak_inst = 0;
-    }
-}
+shell_exec("apt-get install -y --force-yes libxml2-dev  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libbz2-dev  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libcurl4-openssl-dev   > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libmcrypt-dev  > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libmhash2 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libmhash-dev  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpcre3  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpcre3-dev  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes make  > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes build-essential  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxslt1-dev git > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libssl-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes git > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes php5.6  > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes unzip > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes python-software-properties > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpopt0 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpq-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpq5 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpspell-dev > /dev/null 2>&1");
+echo "#";
+#shell_exec("alias php='/home/fos-streaming/fos/php/bin/php");
+shell_exec("apt-get install -y --force-yes libpthread-stubs0-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libpython-stdlib > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libqdbm-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libqdbm14 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libquadmath0 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes librecode-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes librecode0 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes librtmp-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes librtmp0 > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libsasl2-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsasl2-modules > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsctp-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsctp1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsensors4 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsensors4-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsm-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsm6 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsnmp-base > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsnmp-dev > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libsnmp-perl > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsnmp30 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libsqlite3-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libssh2-1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libssh2-1-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libssl-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libstdc++-4.8-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libstdc++6-4.7-dev > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libsybdb5 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtasn1-3-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtasn1-6-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libterm-readkey-perl > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtidy-0.99-0 > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libtidy-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtiff5 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtiff5-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtiffxx5 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtimedate-perl > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtinfo-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtool > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libtsan0 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libunistring0 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libvpx-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libvpx1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libwrap0-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libx11-6 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libx11-data > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libx11-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxau-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxau6 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxcb1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxcb1-dev > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes libxdmcp-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxdmcp6 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxml2 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxml2-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxmltok1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxmltok1-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxpm-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxpm4 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxslt1-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxslt1.1 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxt-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes libxt6 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes linux-libc-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes m4 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes make > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes man-db > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes netcat-openbsd > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes odbcinst1debian2 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes openssl > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes patch > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes pkg-config > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes po-debconf > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes python > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes python-minimal > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes python2.7 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes python2.7-minimal > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes re2c > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes unixodbc > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes unixodbc-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes uuid-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes x11-common > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes x11proto-core-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes x11proto-input-dev > /dev/null 2>&1");
+echo "#";
+shell_exec("apt-get install -y --force-yes x11proto-kb-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes xorg-sgml-doctools > /dev/null 2>&1");
+shell_exec("apt-get install -y libjpeg8 > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes xtrans-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes zlib1g-dev > /dev/null 2>&1");
+shell_exec("apt-get install -y --force-yes php5.6-fpm  > /dev/null 2>&1");
 echo "]PASS \n";
 
 
