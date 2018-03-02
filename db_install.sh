@@ -17,8 +17,8 @@ echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-se
 apt-get install -y mysql-server > /dev/null 2>&1
 apt-get install -y php5-mysql  > /dev/null 2>&1
 
-mysql -u root -p $sqlpasswd -e "CREATE DATABASE $sqldatabase"
-mysql -u root -p $sqlpasswd -e "grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
+mysql --user=root --password=$sqlpasswd --execute="CREATE DATABASE $sqldatabase"
+mysql --user=root --passwprd=$sqlpasswd --execute="grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
 
 echo  "hostname: localhost, database_name: " $sqldatabase " , database_username: "  $sqluname  " , database_password " $sqlpasswd
 echo "\n "
@@ -27,12 +27,12 @@ sed -i 's/xxx/'$sqldatabase'/g' /home/fos-streaming/fos/www/config.php
 sed -i 's/zzz/'$sqlpasswd'/g' /home/fos-streaming/fos/www/config.php 
 sed -i 's/ttt/'$sqluname'/g' /home/fos-streaming/fos/www/config.php
 
-cd /usr/src/
-wget https://getcomposer.org/installer 
-php installer 
-cd /home/fos-streaming/fos/www/  
-php /usr/src/composer.phar install  
+#cd /usr/src/
+#wget https://getcomposer.org/installer 
+#php installer 
+#cd /home/fos-streaming/fos/www/  
+#php /usr/src/composer.phar install  
 
 curl "http://127.0.0.1:8000/install.php?install" 
 curl "http://127.0.0.1:8000/install.php?update"
-rm -r /home/fos-streaming/fos/www/install.php
+#rm -r /home/fos-streaming/fos/www/install.php
