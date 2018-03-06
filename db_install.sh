@@ -18,7 +18,7 @@ apt-get install -y mysql-server > /dev/null 2>&1
 apt-get install -y php5-mysql  > /dev/null 2>&1
 
 mysql --user=root --password=$sqlpasswd --execute="CREATE DATABASE $sqldatabase"
-mysql --user=root --passwprd=$sqlpasswd --execute="grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
+mysql --user=root --password=$sqlpasswd --execute="grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
 
 echo  "hostname: localhost, database_name: " $sqldatabase " , database_username: "  $sqluname  " , database_password " $sqlpasswd
 echo "\n "
