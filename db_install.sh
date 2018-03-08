@@ -21,7 +21,7 @@ mysql --user=root --password=$sqlpasswd --execute="CREATE DATABASE $sqldatabase"
 mysql --user=root --password=$sqlpasswd --execute="grant all privileges on $sqldatabase.* to '$sqluname'@'localhost' identified by '$sqlpasswd'"
 
 echo  "hostname: localhost, database_name: " $sqldatabase " , database_username: "  $sqluname  " , database_password " $sqlpasswd
-echo "\n "
+echo "/n "
 
 sed -i 's/xxx/'$sqldatabase'/g' /home/fos-streaming/fos/www/config.php  
 sed -i 's/zzz/'$sqlpasswd'/g' /home/fos-streaming/fos/www/config.php 
@@ -33,6 +33,6 @@ sed -i 's/ttt/'$sqluname'/g' /home/fos-streaming/fos/www/config.php
 #cd /home/fos-streaming/fos/www/  
 #php /usr/src/composer.phar install  
 
-curl "http://127.0.0.1:8000/install.php?install" 
-curl "http://127.0.0.1:8000/install.php?update"
+#curl "http://127.0.0.1:8000/install.php?install" 
+#curl "http://127.0.0.1:8000/install.php?update"
 #rm -r /home/fos-streaming/fos/www/install.php
